@@ -52,8 +52,8 @@ body{
 .dropdown-content{
     display: none;
     position: absolute;
-    top:50px;
-    left: -200px;
+    top:60px;
+    left: -145px;
     flex-direction: column;
     z-index: 1;
     cursor: pointer;
@@ -64,8 +64,8 @@ body{
     border:solid 2px;
     height: 100px;
     width: 325px;
-    background-color: darkgray;
-    color: #376E6F;
+    background-color: black;
+    color: darkgray;
     font-size: 30px;
     text-align: center;
 }
@@ -85,7 +85,7 @@ body{
     display: none;
     position: absolute;
     top:50px;
-    right: -50px;
+    right: -20px;
     flex-direction: column;
     z-index: 1;
     cursor: pointer;
@@ -104,6 +104,70 @@ body{
 
 .account-dropdown:hover .account-dropdown-content{
     display:block;
+}
+
+.switch{
+    position: relative; 
+    display: flex;
+    width: 45px; 
+    height: 10px;
+    left: 70px;
+    border: solid 2px; 
+    justify-content: center;
+    
+}
+
+.switch input{
+    opacity: 0;
+    width: 0; 
+    height: 0; 
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer; 
+    top: 0;
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    background-color: maroon; 
+    -webkit-transition: .4s; 
+    transition: .4s;
+}
+
+.slider:before{
+    position: absolute;
+    content: "";
+    height: 10px; 
+    width: 10px; 
+    left: 4px; 
+    bottom: 0px; 
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider{
+    background-color: teal;
+}
+
+input:focus + .slider{
+    box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    
+}
+
+.slider .round{
+    border-radius:50px;
+}
+
+.slider.round:before{
+    border-radius: 50%;
 }
 
 .search{
@@ -147,6 +211,14 @@ body{
     border: none;
 }
 
+.use-app:before{
+    color: black;
+}
+
+.use-app:visited{
+    color: darkgray;
+}
+
 .title-image{
     height:70px;
     width: 150px;
@@ -154,7 +226,6 @@ body{
 }
 
 .log-in{
-    
     width:100px;
     font-size: 30px;
     background-color:#2F4454;
@@ -171,9 +242,11 @@ body{
     font-size: 35px;
     justify-content: center;
     align-content: center; 
-    background-color: #2F4454;
-    background:none;
-    border: none;
+    background-image:url(/Assets/peony.avif);
+    background-size: cover;
+   border:none;
+   border-radius: 50px;;
+   
     padding:0;
 }
 
@@ -236,11 +309,7 @@ body{
     width: 25px;
 }
 
-.more-info{
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-}
+
 
 .middle-container{
     display:flex;
@@ -301,13 +370,13 @@ body{
    justify-content: center;
    align-items: center;
    font-size: 30px;
-   
 }
 
 .join-icon{
     border: none;
+    background-color: darkgray;
+    height: 20px;
+    width: 100px;
+    border-radius: 50px;
 }
 
-.more-ellipsis{
-    border:none;
-}

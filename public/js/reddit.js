@@ -18,14 +18,8 @@ function upvote(id){
    .then((response) => {
       console.log("upvoted")
       console.log(id)
-      info = response.json()
-      return info
-   })
-
-   .then((info) => {
-      console.log(info)
       let newVote = document.getElementById(id)
-     newVote.innerText = Number(newVote.innerText) + 1
+      newVote.innerHTML = Number(newVote.innerHTML) + 1 
    })
 
    .catch((error) => {
@@ -33,19 +27,14 @@ function upvote(id){
    })
 }
 
+// change my functions to reflect html change
 function downvote(id){
    fetch(`/downvote/${id}`)
    .then((response) => {
       console.log("downvoted")
       console.log(id)
-      info = response.json()
-      return info
-   })
-
-   .then((info) => {
-      console.log(info)
       let newVote = document.getElementById(id)
-      newVote.innerText = Number(newVote.innerText) - 1
+      newVote.innerHTML = Number(newVote.innerHTML) - 1
    })
 
    .catch((error) => {
@@ -70,12 +59,30 @@ function subreddits(subreddit){
    })
 }
 
+function goHome(){
+   fetch("/posts")
+   .then((response) => {
+      info = response.json()
+      return info
+     })
+     
+     .then((info) => {
+      console.log(info)
+      displayPost(info)
+     })
+     
+     .catch((error) => {
+      console.log(error)
+     })
+   }
+
+
 function displayPost(info){
    const postContainer = document.getElementById("post-container")
    postContainer.innerHTML = ""
 
    info.forEach((info) => {
-      threadPicTag = info.userpic
+      threadPicTag = info.redditicon
       threadNameTag = info.subreddit
       timeTag = info.timestamp
       authorImageTag = info.authorimage
@@ -139,23 +146,13 @@ function displayPost(info){
      userInfoDiv.appendChild(threadPostDiv)
      topContainerDiv.appendChild(userInfoDiv)
   
-     subscribeIcon = document.createElement("div")
+     
      moreInfoDiv = document.createElement("div")
      moreInfoDiv.classList.add("more-info")
-     joinDiv = document.createElement('div')
-     joinDiv.classList.add("join-icon")
      joinButton = document.createElement("button")
+     joinButton.classList.add("join-icon")
      joinButton.innerText = `Join Subreddit`
-     joinDiv.appendChild(joinButton)
-     moreInfoDiv.appendChild(joinDiv)
-  
-     ellipsisDiv = document.createElement("div")
-     ellipsisDiv.classList.add("more-ellipsis")
-     ellipsisButton = document.createElement("button")
-     ellipsisButton.innerText = ` . . . `
-     ellipsisDiv.appendChild(ellipsisButton)
-  
-     moreInfoDiv.appendChild(ellipsisDiv)
+     moreInfoDiv.appendChild(joinButton)
      topContainerDiv.appendChild(moreInfoDiv)
      
      middleContainerDiv = document.createElement("div")
@@ -221,6 +218,6 @@ function displayPost(info){
     downButton.setAttribute("onclick", `downvote(${postId})`)
   
    })
-
+   
 
 }

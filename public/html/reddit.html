@@ -15,6 +15,7 @@
                 <div>__</div>
                 <div>__</div> </button>
             <div class="dropdown-content"> 
+                <div onclick='goHome()'>Home</div>
                 <div onclick='subreddits("anime")'> Anime </div>
                 <div onclick='subreddits("games")'> Games</div>
                 <div onclick='subreddits("somethingweird")'> Something Weird</div>
@@ -27,15 +28,22 @@
                 <div class="icon"><h1 class="search-icon"> ☌ </h1></div>
                 <input type="text" class="searchbar">
             </div>
+            
             <div><button class="log-in">Log In</button></div>
-            <div><button class="use-app">Use App</button></div>
+            <a class="use-app" href="https://apps.apple.com/gb/app/reddit/id1064216828">Use App</a>
+            <div> <p>Welcome, AwkwardPeony!</p></div>
             <div class="account-dropdown">
                 <button class="circle-ellipsis"> 
-                <div> . </div>
-                <div> . </div>
-                <div> . </div></button> 
+                </button> 
                 <div class="account-dropdown-content"> 
-                    <div> Online Status</div>
+                
+                
+                       <div class="status"> Online Status 
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
                     <div> Profile</div>
                     <div> Settings</div>
                     <div> Premium </div>
