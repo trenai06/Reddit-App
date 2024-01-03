@@ -26,6 +26,16 @@ const getSubreddit = (req, res) => {
     })
 }
 
+const getPostById = (req,res) => {
+    const id = req.params.id
+        pool.query('SELECT * FROM posts WHERE id = $1', [id], (error, results) => {
+            if(error){
+                throw error
+            }
+            res.status(200).json(results.rows[0])
+        })
+    }
+
 const upvote = (req, res) => {
     const id = req.params.id
    
@@ -36,8 +46,6 @@ const upvote = (req, res) => {
         res.status(200).send(`User ID ${id} was upvoted`)
     })
 }
-// send is just going to send back a quick message.      json is if you need to send back data to manipulate. 
-
 
 const downvote = (req, res) => {
     const id = req.params.id 
@@ -54,4 +62,5 @@ module.exports = {
     getSubreddit,
     upvote, 
     downvote, 
+    getPostById,
 }
